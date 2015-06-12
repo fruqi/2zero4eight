@@ -1,0 +1,18 @@
+[data-value="2"] {
+  background-color: yellow;
+}
+
+[data-value="4"] {
+  background-color: green;
+  color: white
+}
+
+[data-value="8"] {
+  background-color: blue;
+  color: white;
+}
+
+[data-value="16"] {
+  background-color: red;
+  color: white; 
+}
