@@ -26,22 +26,93 @@ $(function() {
   function getRandCel(num) {
     setTimeout(function() {
       var emptyCells = $("[data-value=0]"),
-          emptyCellsCount = emptyCells.length;
+          emptyCellsCount = emptyCells.size();
 
-      // console.log(emptyCells, " : ", emptyCellsCount);
+      // console.log("emptyCells : ", emptyCellsCount);
 
       if (num == undefined) { num = 1; } // set default value if num is undefined
 
-      for(var i = 0; i < num; i++) {
+      // if (emptyCellsCount > 0) {
+        for(var i = 0; i < num; i++) {
 
-        var randIndex = _.random(0, emptyCellsCount - 1),
-            selectedCell = emptyCells.eq(randIndex);
+          var randIndex = _.random(0, emptyCellsCount - 1),
+              selectedCell = emptyCells.eq(randIndex);
 
-        selectedCell.setDataValue(2);
-        selectedCell.text(2);
-      }
+          selectedCell.setDataValue(2);
+          selectedCell.text(2);
+
+          emptyCells = $("[data-value=0]");
+          emptyCellsCount = emptyCells.size();
+
+          if (emptyCellsCount == 0) {
+            console.log("check available move");
+            
+            if (!checkAvailableMove()) {
+              alert("Game Over");
+            }
+          }
+
+        }
     }, 500);
   }
+
+  function checkAvailableMove() {
+    if (checkVerticalMove() || checkHorizontalMove()) { return true; }
+    return false
+  }
+
+  function checkHorizontalMove() {
+
+    console.log("checkHorizontalMove");
+
+    var foundMove = false;
+
+    for(var x = 1; x <= 4; x++) {
+      var $row = $("[data-row=" + x + "]");
+
+      for(var y = 1; y <= 4; y++) {
+
+        if(y != 4) {
+          var currentCol = $row.find("[data-col=" + y + "]"),
+              nextCol = $row.find("[data-col=" + (y+1)+ "]");
+
+          if (currentCol.getDataValue() == nextCol.getDataValue()) {
+            foundMove = true;
+          }
+        }
+
+      }
+    }
+
+    return foundMove;
+  }
+
+  function checkVerticalMove() {
+
+    console.log("checkVerticalMove");
+
+    var foundMove = false;
+
+    for(var x = 1; x <= 4; x++) {
+      var $col = $("[data-col=" + x + "]");
+
+      for(var y = 0; y <= 3; y++) {
+        
+        if (y != 3) {
+          var currentCol = $col.eq(y),
+              nextCol = $col.eq(y+1);
+
+          if (currentCol.getDataValue() == nextCol.getDataValue()) {
+            foundMove = true;
+          }
+        }
+
+      }
+    }
+
+    return foundMove;
+  }
+
 
   function initGrid() {
     getRandCel(2);

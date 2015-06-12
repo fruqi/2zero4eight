@@ -15,7 +15,7 @@ body {
 }
 
 [data-value="8"] {
-  background-color: #ededef;
+  background-color: #C9C9D3;
 }
 
 [data-value="16"] {
@@ -23,7 +23,7 @@ body {
 }
 
 [data-value="32"] {
-  background-color: #edeabf; 
+  background-color: #CFCB99; 
 }
 
 [data-value="64"] {
