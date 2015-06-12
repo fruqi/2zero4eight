@@ -1,18 +1,51 @@
+body {
+  color: rgb(119, 110, 101);
+}
+
+.col-md-3, .col-md-8 {
+  border: 1px solid;
+}
+
 [data-value="2"] {
-  background-color: yellow;
+  background-color: #eee4da;
 }
 
 [data-value="4"] {
-  background-color: green;
-  color: white
+  background-color: #edf0c8;
 }
 
 [data-value="8"] {
-  background-color: blue;
-  color: white;
+  background-color: #ededef;
 }
 
 [data-value="16"] {
-  background-color: red;
-  color: white; 
+  background-color: #edee8f; 
+}
+
+[data-value="32"] {
+  background-color: #edeabf; 
+}
+
+[data-value="64"] {
+  background-color: #edeeab; 
+}
+
+[data-value="128"] {
+  background-color: #F4C190;
+}
+
+[data-value="256"] {
+  background-color: #ede33b; 
+}
+
+[data-value="512"] {
+  background-color: #ede442; 
+}
+
+[data-value="1024"] {
+  background-color: #ede999;
+}
+
+[data-value="2048"] {
+  background-color: #ede123; 
 }
